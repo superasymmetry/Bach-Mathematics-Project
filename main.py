@@ -1,5 +1,6 @@
 import random
-from objs import *
+import winsound
+from Algs.objs import Note, Phrase
 
 if __name__ == "__main__":
     # Create an empty phrase

@@ -5,7 +5,9 @@ class Note:
         self.pitch = pitch
 
     def play(self, duration):
-        winsound.Beep(self.pitch, duration)
+        # do a pitch conversion
+        frequency = 440 * (2 ** ((self.pitch - 69) / 12))
+        winsound.Beep(int(frequency), duration)
 
 class Phrase:
     def __init__(self, notes=None):
