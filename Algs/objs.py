@@ -9,16 +9,26 @@ class Note:
         frequency = 440 * (2 ** ((self.pitch - 69) / 12))
         winsound.Beep(int(frequency), duration)
 
+    def show(self):
+        print(self.pitch)
+
 class Phrase:
     def __init__(self, notes=None):
         self.notes = notes if notes is not None else []
 
-    def play(self, duration=500):  # Default duration of 500ms for each note
+    def play(self, duration=200):  # Default duration of 500ms for each note
         for note in self.notes:
             note.play(duration)
 
     def inversion(self):
-        inverted_notes = [Note((12 - note.pitch) % 12) for note in self.notes]
+        if not self.notes:
+            return Phrase()
+        
+        central_pitch = self.notes[0].pitch
+        inverted_notes = [Note(2 * central_pitch - note.pitch) for note in self.notes]
+        for i in range(len(inverted_notes)):
+            self.notes[i].show()
+            inverted_notes[i].show()
         return Phrase(inverted_notes)
     
     def transpose(self, interval):
@@ -34,3 +44,7 @@ class Phrase:
 
     def add_note(self, note):
         self.notes.append(note)
+
+    def show(self):
+        for i in self.notes:
+            i.show()

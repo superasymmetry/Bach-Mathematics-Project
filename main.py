@@ -18,18 +18,8 @@ if __name__ == "__main__":
     # Play the phrase
     phrase.play()
 
-    # Transpose the phrase and play
-    transposed_phrase = phrase.transpose(2)
-    transposed_phrase.play()
+    phrase.retrograde().play()
 
-    # Invert the phrase and play
-    inverted_phrase = phrase.inversion()
-    inverted_phrase.play()
+    phrase.inversion().play()
 
-    # Retrograde the phrase and play
-    retrograded_phrase = phrase.retrograde()
-    retrograded_phrase.play()
-
-    # Retrograde inversion and play
-    retrograded_inverted_phrase = phrase.retrograde_inversion()
-    retrograded_inverted_phrase.play()
+    phrase.transpose(2).play()
